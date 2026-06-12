@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		073234722FDBD99100BDE6B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0732345A2FDBD98F00BDE6B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 073234612FDBD98F00BDE6B4;
+			remoteInfo = "ConnectOnion iOS";
+		};
+		0732347C2FDBD99100BDE6B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0732345A2FDBD98F00BDE6B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 073234612FDBD98F00BDE6B4;
+			remoteInfo = "ConnectOnion iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		073234622FDBD98F00BDE6B4 /* ConnectOnion iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ConnectOnion iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		073234712FDBD99100BDE6B4 /* ConnectOnion iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectOnion iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0732347B2FDBD99100BDE6B4 /* ConnectOnion iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectOnion iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		073234642FDBD98F00BDE6B4 /* ConnectOnion iOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "ConnectOnion iOS";
+			sourceTree = "<group>";
+		};
+		073234742FDBD99100BDE6B4 /* ConnectOnion iOSTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "ConnectOnion iOSTests";
+			sourceTree = "<group>";
+		};
+		0732347E2FDBD99100BDE6B4 /* ConnectOnion iOSUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "ConnectOnion iOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0732345F2FDBD98F00BDE6B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		0732346E2FDBD99100BDE6B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		073234782FDBD99100BDE6B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		073234592FDBD98F00BDE6B4 = {
+			isa = PBXGroup;
+			children = (
+				073234642FDBD98F00BDE6B4 /* ConnectOnion iOS */,
+				073234742FDBD99100BDE6B4 /* ConnectOnion iOSTests */,
+				0732347E2FDBD99100BDE6B4 /* ConnectOnion iOSUITests */,
+				073234632FDBD98F00BDE6B4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		073234632FDBD98F00BDE6B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				073234622FDBD98F00BDE6B4 /* ConnectOnion iOS.app */,
+				073234712FDBD99100BDE6B4 /* ConnectOnion iOSTests.xctest */,
+				0732347B2FDBD99100BDE6B4 /* ConnectOnion iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		073234612FDBD98F00BDE6B4 /* ConnectOnion iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 073234832FDBD99100BDE6B4 /* Build configuration list for PBXNativeTarget "ConnectOnion iOS" */;
+			buildPhases = (
+				0732345E2FDBD98F00BDE6B4 /* Sources */,
+				0732345F2FDBD98F00BDE6B4 /* Frameworks */,
+				073234602FDBD98F00BDE6B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				073234642FDBD98F00BDE6B4 /* ConnectOnion iOS */,
+			);
+			name = "ConnectOnion iOS";
+			productName = "ConnectOnion iOS";
+			productReference = 073234622FDBD98F00BDE6B4 /* ConnectOnion iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		073234702FDBD99100BDE6B4 /* ConnectOnion iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 073234862FDBD99100BDE6B4 /* Build configuration list for PBXNativeTarget "ConnectOnion iOSTests" */;
+			buildPhases = (
+				0732346D2FDBD99100BDE6B4 /* Sources */,
+				0732346E2FDBD99100BDE6B4 /* Frameworks */,
+				0732346F2FDBD99100BDE6B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				073234732FDBD99100BDE6B4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				073234742FDBD99100BDE6B4 /* ConnectOnion iOSTests */,
+			);
+			name = "ConnectOnion iOSTests";
+			productName = "ConnectOnion iOSTests";
+			productReference = 073234712FDBD99100BDE6B4 /* ConnectOnion iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0732347A2FDBD99100BDE6B4 /* ConnectOnion iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 073234892FDBD99100BDE6B4 /* Build configuration list for PBXNativeTarget "ConnectOnion iOSUITests" */;
+			buildPhases = (
+				073234772FDBD99100BDE6B4 /* Sources */,
+				073234782FDBD99100BDE6B4 /* Frameworks */,
+				073234792FDBD99100BDE6B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0732347D2FDBD99100BDE6B4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0732347E2FDBD99100BDE6B4 /* ConnectOnion iOSUITests */,
+			);
+			name = "ConnectOnion iOSUITests";
+			productName = "ConnectOnion iOSUITests";
+			productReference = 0732347B2FDBD99100BDE6B4 /* ConnectOnion iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0732345A2FDBD98F00BDE6B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					073234612FDBD98F00BDE6B4 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					073234702FDBD99100BDE6B4 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 073234612FDBD98F00BDE6B4;
+					};
+					0732347A2FDBD99100BDE6B4 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 073234612FDBD98F00BDE6B4;
+					};
+				};
+			};
+			buildConfigurationList = 0732345D2FDBD98F00BDE6B4 /* Build configuration list for PBXProject "ConnectOnion iOS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 073234592FDBD98F00BDE6B4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 073234632FDBD98F00BDE6B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				073234612FDBD98F00BDE6B4 /* ConnectOnion iOS */,
+				073234702FDBD99100BDE6B4 /* ConnectOnion iOSTests */,
+				0732347A2FDBD99100BDE6B4 /* ConnectOnion iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		073234602FDBD98F00BDE6B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		0732346F2FDBD99100BDE6B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		073234792FDBD99100BDE6B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0732345E2FDBD98F00BDE6B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		0732346D2FDBD99100BDE6B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		073234772FDBD99100BDE6B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		073234732FDBD99100BDE6B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 073234612FDBD98F00BDE6B4 /* ConnectOnion iOS */;
+			targetProxy = 073234722FDBD99100BDE6B4 /* PBXContainerItemProxy */;
+		};
+		0732347D2FDBD99100BDE6B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 073234612FDBD98F00BDE6B4 /* ConnectOnion iOS */;
+			targetProxy = 0732347C2FDBD99100BDE6B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		073234812FDBD99100BDE6B4 /* Debug configuration for PBXProject "ConnectOnion iOS" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		073234822FDBD99100BDE6B4 /* Release configuration for PBXProject "ConnectOnion iOS" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		073234842FDBD99100BDE6B4 /* Debug configuration for PBXNativeTarget "ConnectOnion iOS" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romantcD.ConnectOnion-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		073234852FDBD99100BDE6B4 /* Release configuration for PBXNativeTarget "ConnectOnion iOS" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romantcD.ConnectOnion-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		073234872FDBD99100BDE6B4 /* Debug configuration for PBXNativeTarget "ConnectOnion iOSTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romantcD.ConnectOnion-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConnectOnion iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ConnectOnion iOS";
+			};
+			name = Debug;
+		};
+		073234882FDBD99100BDE6B4 /* Release configuration for PBXNativeTarget "ConnectOnion iOSTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romantcD.ConnectOnion-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConnectOnion iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ConnectOnion iOS";
+			};
+			name = Release;
+		};
+		0732348A2FDBD99100BDE6B4 /* Debug configuration for PBXNativeTarget "ConnectOnion iOSUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romantcD.ConnectOnion-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ConnectOnion iOS";
+			};
+			name = Debug;
+		};
+		0732348B2FDBD99100BDE6B4 /* Release configuration for PBXNativeTarget "ConnectOnion iOSUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GQAQ5635CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.romantcD.ConnectOnion-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "ConnectOnion iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0732345D2FDBD98F00BDE6B4 /* Build configuration list for PBXProject "ConnectOnion iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				073234812FDBD99100BDE6B4 /* Debug configuration for PBXProject "ConnectOnion iOS" */,
+				073234822FDBD99100BDE6B4 /* Release configuration for PBXProject "ConnectOnion iOS" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		073234832FDBD99100BDE6B4 /* Build configuration list for PBXNativeTarget "ConnectOnion iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				073234842FDBD99100BDE6B4 /* Debug configuration for PBXNativeTarget "ConnectOnion iOS" */,
+				073234852FDBD99100BDE6B4 /* Release configuration for PBXNativeTarget "ConnectOnion iOS" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		073234862FDBD99100BDE6B4 /* Build configuration list for PBXNativeTarget "ConnectOnion iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				073234872FDBD99100BDE6B4 /* Debug configuration for PBXNativeTarget "ConnectOnion iOSTests" */,
+				073234882FDBD99100BDE6B4 /* Release configuration for PBXNativeTarget "ConnectOnion iOSTests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		073234892FDBD99100BDE6B4 /* Build configuration list for PBXNativeTarget "ConnectOnion iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0732348A2FDBD99100BDE6B4 /* Debug configuration for PBXNativeTarget "ConnectOnion iOSUITests" */,
+				0732348B2FDBD99100BDE6B4 /* Release configuration for PBXNativeTarget "ConnectOnion iOSUITests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0732345A2FDBD98F00BDE6B4 /* Project object */;
+	validationLevel = 1;
+}

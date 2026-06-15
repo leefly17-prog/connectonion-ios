@@ -10,22 +10,40 @@ import SwiftData
 
 @main
 struct ConnectOnion_iOSApp: App {
-    var sharedModelContainer: ModelContainer = {
+    let sharedModelContainer: ModelContainer
+
+    init() {
+        let arguments = ProcessInfo.processInfo.arguments
+        if arguments.contains("--ui-testing") {
+            let scenario = PreviewFixtures.scenario(from: arguments)
+            PreviewFixtures.installMockDependencies(scenario: scenario)
+            sharedModelContainer = PreviewFixtures.seededContainer(scenario: scenario)
+        } else {
+            sharedModelContainer = Self.persistentContainer()
+        }
+    }
+
+    private static func persistentContainer() -> ModelContainer {
         let schema = Schema([
-            Item.self,
+            AgentConfigRecord.self,
+            ConversationRecord.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
+            try FileManager.default.createDirectory(
+                at: .applicationSupportDirectory,
+                withIntermediateDirectories: true
+            )
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
-    }()
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppShellView()
         }
         .modelContainer(sharedModelContainer)
     }

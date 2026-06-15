@@ -1,0 +1,235 @@
+import SwiftData
+import SwiftUI
+
+struct AppShellView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \AgentConfigRecord.createdAt) private var agents: [AgentConfigRecord]
+    @Query(sort: \ConversationRecord.updatedAt, order: .reverse) private var conversations: [ConversationRecord]
+
+    @State private var selectedAgentAddress: String?
+    @State private var selectedConversationID: UUID?
+    @State private var columnVisibility: NavigationSplitViewVisibility = .automatic
+    @State private var preferredCompactColumn: NavigationSplitViewColumn = .sidebar
+    @State private var pendingPrompts: [UUID: String] = [:]
+    @State private var showingAddAgent = false
+    @State private var showingNewConversation = false
+    @State private var showingSettings = false
+    @State private var editingAgent: AgentConfigRecord?
+    @State private var deletingAgent: AgentConfigRecord?
+    @State private var infoStore = AgentInfoStore()
+
+    var body: some View {
+        NavigationSplitView(columnVisibility: $columnVisibility, preferredCompactColumn: $preferredCompactColumn) {
+            SidebarView(
+                agents: agents,
+                conversations: conversations,
+                infoByAddress: infoStore.infoByAddress,
+                selectedAgentAddress: $selectedAgentAddress,
+                selectedConversationID: $selectedConversationID,
+                onNewChat: newChat,
+                onNewConversation: { showingNewConversation = true },
+                onAddAgent: { showingAddAgent = true },
+                onRenameAgent: { editingAgent = $0 },
+                onDeleteAgent: { deletingAgent = $0 },
+                onDeleteConversation: deleteConversation,
+                onSettings: { showingSettings = true },
+                onOpenDetail: showDetailColumn
+            )
+        } detail: {
+            detailView
+        }
+        .accessibilityIdentifier(AccessibilityID.appShell)
+        .sheet(isPresented: $showingAddAgent) {
+            AgentEditorView { address, alias, endpoint in
+                addAgent(address: address, alias: alias, endpoint: endpoint)
+            }
+        }
+        .sheet(item: $editingAgent) { agent in
+            AgentEditorView(
+                title: "Edit Agent",
+                initialAddress: agent.address,
+                initialAlias: agent.alias,
+                initialEndpoint: agent.preferredEndpoint,
+                isAddressEditable: false
+            ) { _, alias, endpoint in
+                renameAgent(agent, alias: alias, endpoint: endpoint)
+            }
+        }
+        .sheet(isPresented: $showingNewConversation) {
+            NewConversationSheet(
+                agents: agents,
+                infoByAddress: infoStore.infoByAddress,
+                initialAgentAddress: selectedAgentAddress
+            ) { agent, prompt in
+                if prompt.isEmpty {
+                    newChat(for: agent)
+                } else {
+                    startConversation(agent: agent, prompt: prompt)
+                }
+            }
+        }
+        .sheet(isPresented: $showingSettings) {
+            SettingsView(onAddAgent: showAddAgentFromSettings)
+        }
+        .confirmationDialog(
+            "Delete Agent?",
+            isPresented: Binding(
+                get: { deletingAgent != nil },
+                set: { if !$0 { deletingAgent = nil } }
+            ),
+            titleVisibility: .visible,
+            presenting: deletingAgent
+        ) { agent in
+            Button("Delete Agent", role: .destructive) {
+                deleteAgent(agent)
+                deletingAgent = nil
+            }
+            .accessibilityIdentifier(AccessibilityID.confirmDeleteAgentButton)
+
+            Button("Cancel", role: .cancel) {
+                deletingAgent = nil
+            }
+        }
+        .task {
+            restoreInitialSelection()
+            infoStore.refresh(addresses: agents.map(\.address))
+        }
+        .onChange(of: agents.map(\.address)) { _, addresses in
+            restoreInitialSelection()
+            infoStore.refresh(addresses: addresses)
+        }
+    }
+
+    @ViewBuilder
+    private var detailView: some View {
+        if let conversation = selectedConversation,
+           let agent = agent(for: conversation.agentAddress) {
+            ChatScreen(
+                conversation: conversation,
+                agent: agent,
+                initialPrompt: pendingPrompts[conversation.id],
+                onInitialPromptConsumed: { pendingPrompts[conversation.id] = nil }
+            )
+        } else if let agent = selectedAgent {
+            AgentLandingView(
+                agent: agent,
+                info: infoStore.infoByAddress[agent.address],
+                onSend: { prompt in startConversation(agent: agent, prompt: prompt) }
+            )
+        } else {
+            WelcomeView(onAddAgent: { showingAddAgent = true })
+        }
+    }
+
+    private var selectedConversation: ConversationRecord? {
+        guard let selectedConversationID else { return nil }
+        return conversations.first { $0.id == selectedConversationID }
+    }
+
+    private var selectedAgent: AgentConfigRecord? {
+        guard let selectedAgentAddress else { return agents.first }
+        return agents.first { $0.address == selectedAgentAddress }
+    }
+
+    private func restoreInitialSelection() {
+        if agents.isEmpty {
+            selectedAgentAddress = nil
+            selectedConversationID = nil
+            preferredCompactColumn = .sidebar
+            columnVisibility = .automatic
+            return
+        }
+
+        if selectedConversationID == nil, selectedAgentAddress == nil {
+            selectedAgentAddress = agents.first?.address
+        }
+    }
+
+    private func agent(for address: String) -> AgentConfigRecord? {
+        agents.first { $0.address == address }
+    }
+
+    private func addAgent(address: String, alias: String, endpoint: URL?) {
+        guard let validAddress = AgentAddress(rawValue: address) else { return }
+
+        if let existing = agents.first(where: { $0.address == validAddress.rawValue }) {
+            existing.alias = alias
+            existing.preferredEndpoint = endpoint
+            existing.updatedAt = .now
+        } else {
+            modelContext.insert(AgentConfigRecord(address: validAddress.rawValue, alias: alias, preferredEndpoint: endpoint))
+        }
+
+        selectedAgentAddress = validAddress.rawValue
+        selectedConversationID = nil
+        showingAddAgent = false
+        infoStore.refresh(addresses: [validAddress.rawValue])
+        showDetailColumn()
+    }
+
+    private func renameAgent(_ agent: AgentConfigRecord, alias: String, endpoint: URL?) {
+        agent.alias = alias
+        agent.preferredEndpoint = endpoint
+        agent.updatedAt = .now
+        infoStore.refresh(addresses: [agent.address])
+    }
+
+    private func showAddAgentFromSettings() {
+        showingSettings = false
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(250))
+            showingAddAgent = true
+        }
+    }
+
+    private func deleteAgent(_ agent: AgentConfigRecord) {
+        let related = conversations.filter { $0.agentAddress == agent.address }
+        related.forEach(modelContext.delete)
+        modelContext.delete(agent)
+
+        if selectedAgentAddress == agent.address {
+            selectedAgentAddress = agents.first(where: { $0.address != agent.address })?.address
+            selectedConversationID = nil
+        }
+    }
+
+    private func deleteConversation(_ conversation: ConversationRecord) {
+        modelContext.delete(conversation)
+        if selectedConversationID == conversation.id {
+            selectedConversationID = nil
+            selectedAgentAddress = conversation.agentAddress
+        }
+    }
+
+    private func newChat(for agent: AgentConfigRecord) {
+        selectedAgentAddress = agent.address
+        selectedConversationID = nil
+        showDetailColumn()
+    }
+
+    private func startConversation(agent: AgentConfigRecord, prompt: String) {
+        let conversation = ConversationRecord(agentAddress: agent.address, mode: .safe)
+        modelContext.insert(conversation)
+        pendingPrompts[conversation.id] = prompt
+        selectedAgentAddress = agent.address
+        selectedConversationID = conversation.id
+        showDetailColumn()
+    }
+
+    private func showDetailColumn() {
+        columnVisibility = .detailOnly
+        preferredCompactColumn = .detail
+    }
+}
+
+#Preview("Loaded Shell") {
+    let _ = PreviewFixtures.installMockDependencies()
+    AppShellView()
+        .modelContainer(PreviewFixtures.seededContainer())
+}
+
+#Preview("Empty Shell") {
+    let _ = PreviewFixtures.installMockDependencies()
+    AppShellView()
+        .modelContainer(PreviewFixtures.container())
+}

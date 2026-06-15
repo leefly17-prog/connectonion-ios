@@ -1,0 +1,71 @@
+import Foundation
+
+@MainActor
+final class MockConnectOnionClient: ConnectOnionClientProviding {
+    enum Mode {
+        case standard
+        case onboardFirstMessage
+    }
+
+    private let mode: Mode
+    private var continuation: AsyncThrowingStream<ConnectOnionClientEvent, Error>.Continuation?
+    private(set) var sentControlMessages: [String] = []
+
+    init(mode: Mode = .standard) {
+        self.mode = mode
+    }
+
+    func send(input: AgentInput, to agent: AgentConfig, session: ConversationSession) -> AsyncThrowingStream<ConnectOnionClientEvent, Error> {
+        AsyncThrowingStream { continuation in
+            self.continuation = continuation
+            continuation.yield(.connected(sessionID: session.id.uuidString, status: "connected", serverNewer: false, session: nil, chatItems: []))
+
+            if mode == .onboardFirstMessage {
+                continuation.yield(.server(ServerEvent(payload: [
+                    "type": .string("ONBOARD_REQUIRED"),
+                    "id": .string("mock-onboard"),
+                    "methods": .array([.string("invite_code")])
+                ])))
+                continuation.finish()
+                return
+            }
+
+            continuation.yield(.server(ServerEvent(payload: [
+                "type": .string("llm_call"),
+                "id": .string("mock-thinking"),
+                "model": .string("co/mock")
+            ])))
+            continuation.yield(.server(ServerEvent(payload: [
+                "type": .string("assistant"),
+                "id": .string("mock-agent"),
+                "content": .string("Connected. Streaming mock response for: \(input.prompt)")
+            ])))
+            continuation.yield(.output(result: "Connected. Streaming mock response for: \(input.prompt)", session: nil, chatItems: []))
+            continuation.finish()
+        }
+    }
+
+    func reconnect(to agent: AgentConfig, session: ConversationSession) -> AsyncThrowingStream<ConnectOnionClientEvent, Error> {
+        send(input: AgentInput(prompt: "Reconnect"), to: agent, session: session)
+    }
+
+    func sendAskUserResponse(_ answer: String) async throws {
+        sentControlMessages.append("ask_user:\(answer)")
+    }
+
+    func sendApprovalResponse(approved: Bool, scope: String, mode: String?, feedback: String?) async throws {
+        sentControlMessages.append("approval:\(approved):\(scope)")
+    }
+
+    func sendOnboardSubmit(inviteCode: String?, payment: Double?) async throws {
+        sentControlMessages.append("onboard:\(inviteCode ?? "")")
+    }
+
+    func sendPlanReviewResponse(_ message: String) async throws {
+        sentControlMessages.append("plan:\(message)")
+    }
+
+    func disconnect() {
+        continuation?.finish()
+    }
+}

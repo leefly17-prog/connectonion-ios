@@ -4,7 +4,7 @@ ConnectOnion iOS is a SwiftUI app for connecting to local or remote ConnectOnion
 
 ## Project Snapshot
 
-- Platform: iOS
+- Platform: iOS 27+
 - UI: SwiftUI
 - Persistence: SwiftData
 - Bundle identifier: `com.romantcD.ConnectOnion-iOS`

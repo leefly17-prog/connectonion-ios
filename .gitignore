@@ -1,0 +1,47 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+*.xcscmblueprint
+
+# User and workspace data
+*.xcuserdata/
+*.xcuserdatad/
+*.xccheckout
+*.moved-aside
+*.swp
+*.swo
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods / Carthage / Tuist / fastlane
+Pods/
+Carthage/Build/
+Dependencies/
+fastlane/report.xml
+fastlane/Preview.html
+
+# Archives and exports
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
+Icon?
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.lock
+
+# Xcode playgrounds and snapshots
+timeline.xctimeline
+playground.xcworkspace
+
+# Misc editor state
+.idea/
+.vscode/

@@ -107,6 +107,7 @@ struct AppShellView: View {
             ChatScreen(
                 conversation: conversation,
                 agent: agent,
+                info: infoStore.infoByAddress[agent.address],
                 initialPrompt: pendingPrompts[conversation.id],
                 onInitialPromptConsumed: { pendingPrompts[conversation.id] = nil }
             )

@@ -2,16 +2,17 @@ import SwiftUI
 
 struct ChatHeaderView: View {
     var agent: AgentConfigRecord
+    var info: AgentInfo?
     var state: SessionActiveState
     var elapsedTime: TimeInterval
 
     var body: some View {
         GlassEffectContainer(spacing: 8) {
             HStack(spacing: 12) {
-                AgentAvatar(title: agent.displayName, online: isOnline)
+                AgentAvatar(title: displayName, online: isOnline)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(agent.displayName)
+                    Text(displayName)
                         .font(.headline)
                         .lineLimit(1)
 
@@ -52,6 +53,10 @@ struct ChatHeaderView: View {
         }
     }
 
+    private var displayName: String {
+        info?.name ?? agent.displayName
+    }
+
     private var isOnline: Bool {
         switch state {
         case .connected, .active, .waiting, .reconnecting:
@@ -63,9 +68,9 @@ struct ChatHeaderView: View {
 }
 
 #Preview("Chat Header Ready") {
-    ChatHeaderView(agent: PreviewFixtures.sampleAgent, state: .idle, elapsedTime: 0)
+    ChatHeaderView(agent: PreviewFixtures.sampleAgent, info: PreviewFixtures.sampleAgentInfo, state: .idle, elapsedTime: 0)
 }
 
 #Preview("Chat Header Active") {
-    ChatHeaderView(agent: PreviewFixtures.sampleAgent, state: .active, elapsedTime: 12.4)
+    ChatHeaderView(agent: PreviewFixtures.sampleAgent, info: PreviewFixtures.sampleAgentInfo, state: .active, elapsedTime: 12.4)
 }

@@ -4,6 +4,7 @@ import SwiftData
 struct ChatScreen: View {
     let conversation: ConversationRecord
     let agent: AgentConfigRecord
+    let info: AgentInfo?
     let initialPrompt: String?
     let onInitialPromptConsumed: () -> Void
 
@@ -12,11 +13,13 @@ struct ChatScreen: View {
     init(
         conversation: ConversationRecord,
         agent: AgentConfigRecord,
+        info: AgentInfo?,
         initialPrompt: String?,
         onInitialPromptConsumed: @escaping () -> Void
     ) {
         self.conversation = conversation
         self.agent = agent
+        self.info = info
         self.initialPrompt = initialPrompt
         self.onInitialPromptConsumed = onInitialPromptConsumed
         _viewModel = State(initialValue: ChatViewModel(conversation: conversation, agent: agent.config))
@@ -24,7 +27,12 @@ struct ChatScreen: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            ChatHeaderView(agent: agent, state: viewModel.sessionState, elapsedTime: viewModel.elapsedTime)
+            ChatHeaderView(
+                agent: agent,
+                info: info,
+                state: viewModel.sessionState,
+                elapsedTime: viewModel.elapsedTime
+            )
 
             ChatMessageList(
                 items: viewModel.items,
@@ -56,7 +64,7 @@ struct ChatScreen: View {
             }
 
             ChatInputBar(
-                placeholder: "Message \(agent.displayName)",
+                placeholder: "Message \(displayName)",
                 isRunning: viewModel.shouldShowStopButton,
                 onSend: { viewModel.send($0) },
                 onStop: viewModel.stop
@@ -74,6 +82,10 @@ struct ChatScreen: View {
             onInitialPromptConsumed()
         }
     }
+
+    private var displayName: String {
+        info?.name ?? agent.displayName
+    }
 }
 
 #Preview("Chat Screen") {
@@ -83,7 +95,13 @@ struct ChatScreen: View {
     let agent = try? context.fetch(FetchDescriptor<AgentConfigRecord>()).first
     let conversation = try? context.fetch(FetchDescriptor<ConversationRecord>()).first
     if let agent, let conversation {
-        ChatScreen(conversation: conversation, agent: agent, initialPrompt: nil, onInitialPromptConsumed: {})
+        ChatScreen(
+            conversation: conversation,
+            agent: agent,
+            info: agent.cachedInfo,
+            initialPrompt: nil,
+            onInitialPromptConsumed: {}
+        )
             .modelContainer(container)
     } else {
         Text("Preview unavailable")

@@ -28,52 +28,8 @@ struct SidebarView: View {
                     .transition(AppMotion.panelTransition)
                 }
 
-                if !agents.isEmpty {
-                    SidebarSectionTitle(title: "Agents")
-                        .transition(AppMotion.panelTransition)
-
-                    ForEach(agents) { agent in
-                        AgentSidebarRow(
-                            agent: agent,
-                            info: infoByAddress[agent.address],
-                            isSelected: selectedAgentAddress == agent.address && selectedConversationID == nil,
-                            onSelect: { select(agent: agent) },
-                            onNewChat: {
-                                tick()
-                                onNewChat(agent)
-                            },
-                            onRename: {
-                                tick()
-                                onRenameAgent(agent)
-                            },
-                            onDelete: {
-                                tick()
-                                onDeleteAgent(agent)
-                            }
-                        )
-                        .transition(AppMotion.panelTransition)
-                    }
-                }
-
-                if !conversations.isEmpty {
-                    SidebarSectionTitle(title: "Chats")
-                        .transition(AppMotion.panelTransition)
-
-                    ForEach(conversations) { conversation in
-                        ConversationSidebarRow(
-                            conversation: conversation,
-                            agentName: agentName(for: conversation.agentAddress),
-                            isSelected: selectedConversationID == conversation.id,
-                            onSelect: { select(conversation: conversation) },
-                            onDelete: {
-                                tick()
-                                onDeleteConversation(conversation)
-                            }
-                        )
-                        .accessibilityIdentifier(AccessibilityID.conversation(conversation.id))
-                        .transition(AppMotion.panelTransition)
-                    }
-                }
+                agentsSection
+                conversationsSection
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 14)
@@ -93,8 +49,6 @@ struct SidebarView: View {
                 .labelStyle(.iconOnly)
                 .accessibilityIdentifier(AccessibilityID.settingsButton)
             }
-            .visibilityPriority(.high)
-            .contentMarginsRemoved()
 
             ToolbarItem(placement: .principal) {
                 Text("ConnectOnion")
@@ -102,8 +56,6 @@ struct SidebarView: View {
                     .lineLimit(1)
             }
         }
-        .toolbarMinimizeBehavior(.onScrollDown, for: .navigationBar)
-        .toolbarMinimizationSafeAreaAdjustment(.enabled, for: .navigationBar)
         .safeAreaInset(edge: .bottom, alignment: .trailing) {
             if !agents.isEmpty {
                 NewChatFloatingButton {
@@ -119,6 +71,64 @@ struct SidebarView: View {
         .background(.background)
     }
 
+    @ViewBuilder
+    private var agentsSection: some View {
+        if !agents.isEmpty {
+            SidebarSectionTitle(title: "Agents")
+                .transition(AppMotion.panelTransition)
+
+            ForEach(agents) { agent in
+                agentRow(for: agent)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var conversationsSection: some View {
+        if !conversations.isEmpty {
+            SidebarSectionTitle(title: "Chats")
+                .transition(AppMotion.panelTransition)
+
+            ForEach(conversations) { conversation in
+                conversationRow(for: conversation)
+            }
+        }
+    }
+
+    private func agentRow(for agent: AgentConfigRecord) -> some View {
+        AgentSidebarRow(
+            agent: agent,
+            info: infoByAddress[agent.address],
+            isSelected: selectedAgentAddress == agent.address && selectedConversationID == nil,
+            onSelect: { select(agent: agent) },
+            onNewChat: {
+                tick()
+                onNewChat(agent)
+            },
+            onRename: {
+                tick()
+                onRenameAgent(agent)
+            },
+            onDelete: {
+                tick()
+                onDeleteAgent(agent)
+            }
+        )
+        .transition(AppMotion.panelTransition)
+    }
+
+    private func conversationRow(for conversation: ConversationRecord) -> some View {
+        ConversationSidebarRow(
+            conversation: conversation,
+            agentName: agentName(for: conversation.agentAddress),
+            isSelected: selectedConversationID == conversation.id,
+            onSelect: { select(conversation: conversation) },
+            onDelete: { delete(conversation: conversation) }
+        )
+        .accessibilityIdentifier(AccessibilityID.conversation(conversation.id))
+        .transition(AppMotion.panelTransition)
+    }
+
     private func select(agent: AgentConfigRecord) {
         tick()
         selectedAgentAddress = agent.address
@@ -131,6 +141,11 @@ struct SidebarView: View {
         selectedAgentAddress = conversation.agentAddress
         selectedConversationID = conversation.id
         onOpenDetail()
+    }
+
+    private func delete(conversation: ConversationRecord) {
+        tick()
+        onDeleteConversation(conversation)
     }
 
     private func tick() {
